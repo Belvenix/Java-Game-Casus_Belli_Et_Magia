@@ -1,0 +1,1 @@
+The textures we rooted into the 'compiling' directory for the project, set as property!
