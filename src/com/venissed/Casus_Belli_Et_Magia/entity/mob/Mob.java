@@ -82,11 +82,11 @@ public abstract class Mob extends Entity {
 	
 	private boolean collision(double dx, double dy) {
 		boolean solid = false;
-		//System.out.println("I am at(" + this.x / 16 + ", " + this.y / 16 + ")");
 		for(int c = 0; c < 4; c++) {
 			//corner system, a little bit messy ;/ you have to test how it looks the best in game ;/
-			double tx = ((this.x + dx) + c % 2) / 16;
-			double ty = ((this.y + dy) + c / 2) / 16;
+			//It works perfectly for the player sprite!
+			double tx = ((this.x + dx) + (c % 2 * -5) + 3) / 16;
+			double ty = ((this.y + dy) + (c / 2 * -5) + 5) / 16;
 			double ix = Math.ceil(tx);
 			double iy = Math.ceil(ty);
 			if(c % 2 == 0)
@@ -94,11 +94,9 @@ public abstract class Mob extends Entity {
 			if(c / 2 == 0)
 				iy = Math.floor(ty);
 			if(level.getTile((int)ix, (int)iy).solid()) {
-				//System.out.println("Collided with tile at (" + (int)ix + ", " + (int)iy + "), (" + (int)tx + ", " + (int)ty + ")");
 				solid = true;
 			}
 			else {
-				//System.out.println("Checking tile at (" + (int)ix + ", " + (int)iy + "), (" + (int)tx + ", " + (int)ty + ")");
 			}
 		}
 		return solid;
